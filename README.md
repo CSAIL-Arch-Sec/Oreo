@@ -1,10 +1,51 @@
 # Artifact
 
-## Initial setup
-Run the following commands to set up the artifact files.
+## Supported Platforms
+
+The artifact should work on most modern Linux distributions and CPUs. 
+It has been currently tested on the following platforms:
+
+### CPUs
+
+* Intel(R) Xeon(R) Gold 5220R 
+* Intel(R) Core(TM) i9-14900K
+* AMD Ryzen Threadripper 2970WX 
+
+
+### Linux distributions
+
+* Ubuntu 22.04 (Linux kernel 5.15)
+* Manjaro Linux 24.0 (Linux kernel 6.1 and 6.6)
+
+
+## Dependencies
+
+The following software dependencies should be correctly installed and configured
+before evaluating the artifact:
+
+* Docker v24+ (with `docker-compose` v1.29+)
+* Vagrant v2.4
+* VirtualBox v7.0
+* SPEC 2017 Benchmarks (`cpu2017-1.1.9.iso` is not included in the artifact because of copyright issues)
+
+## Artifact Structure 
+
+The artifact is consisted of three main parts, which are managed by git submodules:
+
+* **gem5-new** is a modified version of [gem5 v24.0](https://github.com/gem5/gem5/releases/tag/v24.0.0.0) where we ........
+* **linux-new** is a modified version of [Linux Kernel v6.6](https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux/+/refs/tags/v6.6) where we ...
+* **experiments** contains a `Vagrantfile` that automatically setups an Ubuntu 24.04 virtual machine with Vagrant and VirtualBox. The disk image of the VM is then converted to `raw` format with `qemu-img` for `gem5` simulation. The experiment scripts are included in the VM.
+
+Before evaluating the artifact, run the following commands to clone the git submodules from our public repositories:
+
 ```shell
-./setup.sh
+git submodule update --init --recursive
 ```
+
+**_NOTE:_** `cpu2017-1.1.9.iso` is the official image for SPEC 2017 benchmarks.
+It will not be released with the final artifact since it is not open-source.
+You should obtain it by yourself and place it in the root directory of the artifact.
+
 The file structure should be as follows:
 ```
 artifact
@@ -14,8 +55,6 @@ artifact
     | cpu2017-1.1.9.iso
     | ...
 ```
-Note: `cpu2017-1.1.9.iso` is the official image for SPEC 2017 benchmarks.
-It will not be released with the final artifact since it is not open-source.
 
 ### Start docker
 ```shell
