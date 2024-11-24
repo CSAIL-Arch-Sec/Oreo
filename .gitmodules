@@ -1,0 +1,9 @@
+[submodule "linux-new"]
+	path = linux-new
+	url = https://github.com/CSAIL-Arch-Sec/Oreo-linux.git
+[submodule "gem5-new"]
+	path = gem5-new
+	url = https://github.com/CSAIL-Arch-Sec/Oreo-gem5.git
+[submodule "experiments"]
+	path = experiments
+	url = https://github.com/CSAIL-Arch-Sec/Oreo-experiments.git
