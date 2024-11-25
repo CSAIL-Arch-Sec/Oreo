@@ -1,6 +1,6 @@
 # Oreo Artifact
 
-This repository a prototype of **Oreo: Protecting ASLR Against Microarchitectural Attacks**.
+This repository is the artifact of **Oreo: Protecting ASLR Against Microarchitectural Attacks**.
 
 Please check our paper for details:
 ```
