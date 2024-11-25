@@ -75,7 +75,7 @@ artifact
 ```
 
 ### Start docker
-In the artifact root directory, setup and enter the docker by running:
+In the artifact root directory, set up and enter the docker by running:
 ```shell
 cd linux-new
 docker-compose up -d
@@ -89,6 +89,7 @@ In the docker's shell, build Linux by running:
 cd /root/linux
 python3 compile_scripts/compile.py --num-cores=80
 ```
+Please replace `80` with an appropriate number of CPU cores used for the build based on CPU and memory resources.
 
 ### Build gem5
 In the docker's shell, build gem5 by running:
@@ -96,6 +97,7 @@ In the docker's shell, build gem5 by running:
 cd /root/gem5
 python3 scripts/compile.py --num-cores=80
 ```
+Please replace `80` with an appropriate number of CPU cores used for the build based on CPU and memory resources.
 
 ### Build disk image
 We use gem5 full system mode simulation, so we need to put all experiment files into a disk image.
