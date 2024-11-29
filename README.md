@@ -45,11 +45,11 @@ before evaluating the artifact:
 
 The artifact consists of three main parts, which are managed by git submodules:
 
-* **gem5-new** is a modified version of [gem5 v24.0](https://github.com/gem5/gem5/releases/tag/v24.0.0.0) and our major changes are in the following subdirectories:
+* **gem5** is a modified version of [gem5 v24.0](https://github.com/gem5/gem5/releases/tag/v24.0.0.0) and our major changes are in the following subdirectories:
   * `configs/example/gem5_library/gem5-configs`: specialized gem5 config files for the artifact
   * `scripts`: helper scripts to build gem5 and run the experiments
   * `src`: implementation of Oreo's microarchitecture changes
-* **linux-new** is a modified version of [Linux Kernel v6.6](https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux/+/refs/tags/v6.6) and our major changes are in the following subdirectories:
+* **linux** is a modified version of [Linux Kernel v6.6](https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux/+/refs/tags/v6.6) and our major changes are in the following subdirectories:
   * `compile_scripts`: helper scripts to build the Linux kernel
   * other subdirectories: implementation of Oreo's kernel changes
 * **experiments** contains a `Vagrantfile` that automatically setups an Ubuntu 24.04 virtual machine with Vagrant and VirtualBox. The disk image of the VM is then converted to `raw` format with `qemu-img` for gem5 simulation. The experiment scripts are included in the VM.
@@ -68,8 +68,8 @@ The file structure should be as follows:
 ```
 artifact
     | experiments
-    | gem5-new
-    | linux-new
+    | gem5
+    | linux
     | cpu2017-1.1.9.iso
     | ...
 ```
@@ -77,7 +77,7 @@ artifact
 ### Start docker
 In the artifact root directory, set up and enter the docker by running:
 ```shell
-cd linux-new
+cd linux
 docker-compose up -d
 docker-compose exec x86_fs /bin/bash
 ```
@@ -106,7 +106,7 @@ Note that in this part, we run all commands on the host machine (not in the dock
 
 In the artifact root directory, pack Linux source files for faster disk image build.
 ```bash
-tar -cvf linux-new.tar linux-new
+tar -cvf linux.tar linux
 ```
 Run the following commands to generate the disk image, which takes about 1 hour on an Intel(R) Xeon(R) Gold 5220R CPU.
 ```bash
